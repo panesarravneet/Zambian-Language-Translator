@@ -1,5 +1,3 @@
-# translator_llm.py
-
 from transformers import NllbTokenizer, AutoModelForSeq2SeqLM
 
 MODEL_NAME = "facebook/nllb-200-distilled-600M"

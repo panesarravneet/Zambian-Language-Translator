@@ -1,5 +1,3 @@
-# translator_app.py
-
 import streamlit as st
 from translator_backend import translate_en_to_nyanja, translate_nyanja_to_en
 
@@ -22,7 +20,7 @@ def main():
 
     st.write("---")
 
-    # Instead of radio buttons, use a dropdown (selectbox)
+    # Implementation of drop down button
     direction = st.selectbox(
         "Select language direction:",
         ["English → Nyanja", "Nyanja → English"]
