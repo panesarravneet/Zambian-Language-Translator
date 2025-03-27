@@ -11,25 +11,33 @@ def main():
 
     st.markdown(
         """
-        <h1 style='text-align: center; color: #2E86C1;'>
+        <h2 style='text-align: center; color: #2E86C1; margin-top: 0;'>
             Zambian Language Translator
-        </h1>
+        </h2>
         """,
-        unsafe_allow_html=True,
+        unsafe_allow_html=True
     )
 
-    st.write("---")
+    st.write("Enter text below and press **Enter** or click **Translate**.")
 
-    direction = st.selectbox(
-        "Select translation direction:",
-        ["English → Nyanja", "Nyanja → English", "English → Bemba", "Bemba → English"]
-    )
+    # Form so that Enter or Button triggers translation
+    with st.form("translator_form"):
+        direction = st.selectbox(
+            "Select translation direction:",
+            ["English → Nyanja", "Nyanja → English", "English → Bemba", "Bemba → English"]
+        )
 
-    st.markdown("#### Enter text to translate:")
-    user_text = st.text_area("", height=120, placeholder="Type or paste your text here...")
+        user_text = st.text_input(
+            "Type your text here:",
+            placeholder="Press Enter or click Translate"
+        )
 
-    if st.button("Translate"):
-        if user_text.strip():
+        submitted = st.form_submit_button("Translate")
+    
+    if submitted:
+        if not user_text.strip():
+            st.warning("Please enter some text before translating.")
+        else:
             with st.spinner("Translating..."):
                 if direction == "English → Nyanja":
                     translation = translate_en_to_nyanja(user_text)
@@ -39,19 +47,19 @@ def main():
                     translation = translate_en_to_bemba(user_text)
                 else:
                     translation = translate_bemba_to_en(user_text)
+
             st.success("Translation:")
             st.info(translation)
-        else:
-            st.warning("Please enter some text before translating.")
 
     st.write("---")
     st.markdown(
         """
-        <p style='text-align: center; font-size: 0.85em; color: gray;'>
-        NLLB-200 Distilled 600M | <a href='https://huggingface.co/facebook/nllb-200-distilled-600M' target='_blank'>More Info</a>
+        <p style='text-align:center; font-size:0.85em; color:gray; margin-bottom: 0;'>
+        Powered by <a href='https://huggingface.co/facebook/nllb-200-distilled-600M' target='_blank'>
+        NLLB-200 Distilled 600M</a>
         </p>
         """,
-        unsafe_allow_html=True,
+        unsafe_allow_html=True
     )
 
 if __name__ == "__main__":
