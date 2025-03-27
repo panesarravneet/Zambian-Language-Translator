@@ -12,7 +12,7 @@ def main():
     st.markdown(
         """
         <h1 style='text-align: center; color: #2E86C1;'>
-            English ↔ Zambian Language Translator
+            Zambian Language Translator
         </h1>
         """,
         unsafe_allow_html=True,
