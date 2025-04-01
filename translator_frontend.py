@@ -3,7 +3,9 @@ from translator_backend import (
     translate_en_to_nyanja,
     translate_nyanja_to_en,
     translate_en_to_bemba,
-    translate_bemba_to_en
+    translate_bemba_to_en,
+    translate_en_to_swahili,
+    translate_swahili_to_en
 )
 
 def main():
@@ -20,18 +22,17 @@ def main():
 
     st.write("Enter text below and press **Enter** or click **Translate**.")
 
-    # Form so that Enter or Button triggers translation
+    # The form to handle 'Enter' or Button click
     with st.form("translator_form"):
         direction = st.selectbox(
             "Select translation direction:",
-            ["English → Nyanja", "Nyanja → English", "English → Bemba", "Bemba → English"]
+            [
+                "English → Nyanja", "Nyanja → English",
+                "English → Bemba",  "Bemba → English",
+                "English → Swahili","Swahili → English"
+            ]
         )
-
-        user_text = st.text_input(
-            "Type your text here:",
-            placeholder="Press Enter or click Translate"
-        )
-
+        user_text = st.text_input("Type your text here:", placeholder="Press Enter or click Translate")
         submitted = st.form_submit_button("Translate")
     
     if submitted:
@@ -45,8 +46,12 @@ def main():
                     translation = translate_nyanja_to_en(user_text)
                 elif direction == "English → Bemba":
                     translation = translate_en_to_bemba(user_text)
-                else:
+                elif direction == "Bemba → English":
                     translation = translate_bemba_to_en(user_text)
+                elif direction == "English → Swahili":
+                    translation = translate_en_to_swahili(user_text)
+                else:
+                    translation = translate_swahili_to_en(user_text)
 
             st.success("Translation:")
             st.info(translation)
