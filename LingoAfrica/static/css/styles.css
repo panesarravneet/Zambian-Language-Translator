@@ -3,11 +3,13 @@
 -------------------------------------------------------------- */
 :root{
   --bg:#FAF6F1;
-  --card-bg:#FFFFFF;
+  --card-bg:#f4e9d8;
   --earth:#8B572A;       /* burnt umber */
   --leaf:#1E6F4D;        /* deep green */
   --accent:#E07C12;      /* golden orange */
   --muted:#70695C;
+  --hero-gold:#D9C28F;  
+  --hero-orange:#F2A24C;
   --radius:22px;
   --shadow:0 4px 20px rgba(0,0,0,.08);
   font-family:"Inter",sans-serif;
@@ -18,10 +20,22 @@
 /* -----  Layout shell  ------------------------------------- */
 body{
   margin:0;
-  background:var(--bg) url("../img/patterns.svg") repeat;
+  /* 1) fallback colour | 2) your hero image */
+  background: var(--bg) url("../img/hero-bg1.png") center/cover fixed no-repeat;
+  /* Optional dimming layer for text legibility (see step 3) */
+  position: relative;
   min-height:100vh;
   display:flex;
   flex-direction:column;
+}
+body::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  /* adds a faint warm tint instead of pure black */
+  background:rgba(47,42,27,.55);
+  z-index:-1;
+  pointer-events:none;
 }
 header,footer{ text-align:center }
 header{
@@ -30,10 +44,10 @@ header{
 header h1{
   margin:0;
   font-size:clamp(1.8rem,3vw,2.4rem);
-  color:var(--earth);
+  color:var(--hero-gold);
   letter-spacing:-.5px;
 }
-header .tagline{ color:var(--muted); margin-top:.25rem }
+header .tagline{ color:var(--hero-gold); opacity:.8; margin-top:.25rem }
 
 main{ flex:1 }
 .container{
@@ -114,7 +128,7 @@ textarea:focus{
   font-size:1.15rem;
   border:none;
   border-radius:var(--radius);
-  background:linear-gradient(135deg,var(--accent) 0%,#FFB547 100%);
+  background:linear-gradient(135deg,var(--hero-orange) 80%,#FFB547 100%);
   color:#fff;
   cursor:pointer;
   transition:transform .15s,box-shadow .15s;
@@ -152,7 +166,7 @@ textarea:focus{
 /* -----  Footer  ------------------------------------------- */
 footer{
   font-size:.85rem;
-  color:var(--muted);
+  color:var(--hero-gold);
   padding:1rem;
 }
 
@@ -162,7 +176,7 @@ footer{
   bottom:1rem;
   left:50%;
   transform:translateX(-50%) translateY(100%);
-  background:var(--earth);
+  background:var(--hero-orange);
   color:#fff;
   padding:.6rem 1.2rem;
   border-radius:var(--radius);
@@ -174,6 +188,18 @@ footer{
 #toast.show{
   opacity:1;
   transform:translateX(-50%) translateY(0);
+}
+#funFact {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  color: #130f0f;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Responsive tweak */
