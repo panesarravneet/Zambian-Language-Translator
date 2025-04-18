@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+  <div class="card">
+<section class="selector">
+    <!-- FROM dropdown -->
+    <div>
+        <label for="from">Translate&nbsp;from</label>
+        <select id="from">
+            <option value="en" selected>🇬🇧 English</option>
+            <option value="bem">🇿🇲 Bemba</option>
+            <option value="nya">🇲🇼 Nyanja</option>
+            <option value="swh">🇰🇪 Swahili</option>
+            <option value="zu">🇿🇦 Zulu</option>
+            <option value="sn">🇿🇼 Shona</option>
+            <option value="nr">🇿🇦 Ndebele</option>
+        </select>
+    </div>
+
+    <!-- TO dropdown (initial values overwritten by JS) -->
+    <div>
+        <label for="to">Translate&nbsp;to</label>
+        <select id="to"></select>
+    </div>
+</section>
+
+<section class="panels">
+    <textarea id="source" placeholder="Type here…"></textarea>
+    <div class="arrow">⇄</div>
+    <textarea id="target" readonly placeholder="Your translation appears here…"></textarea>
+</section>
+
+<button id="translateBtn">Translate ✨</button>
+
+<section class="share">
+    <button id="copyBtn"><i class="fa fa-copy"></i> Copy</button>
+    <button id="shareBtn"><i class="fa fa-share-nodes"></i> Share</button>
+</section>
+
+<aside id="funFact"></aside>
+<!-- Toast element -->
+<div id="toast" role="status" aria-live="polite">Copied!</div>
+
+{% endblock %}
