@@ -2,28 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>LingoAfrica – Empowering African Voices</title>
+    <title>LumoAfrica</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet" />
     <!-- Google Font for clean body text -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
     <!-- Font Awesome for copy / share icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/africa.png') }}">
 </head>
 <body>
-    <header>
-        <h1>🪘 LingoAfrica</h1>
-        <p class="tagline">Empowering African voices through technology</p>
-    </header>
+    <header class="site-header">
+        <div class="container nav-container">
+          <div class="logo">
+            <img src="{{ url_for('static', filename='img/lumo.png') }}" alt="Lumo Logo" class="logo-img" />
+            <span>LumoAfrica</span>
+          </div>
+          <nav class="main-nav">
+            <a href="/">Translator</a>
+            <a href="/about">About</a>
+          </nav>
+        </div>
+      </header>      
 
     <main>
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
-        Celebrating Language Diversity in Africa &nbsp;·&nbsp;
-        <a href="https://github.com/panesarravneet/Zambian-Language-Translator">GitHub</a>
-    </footer>
+    <footer class="site-footer">
+        <div class="container footer-content">
+            <div class="footer-left">
+                <img src="{{ url_for('static', filename='img/zcsif.png') }}" alt="ZCSIF Logo" class="footer-logo">
+              </div>
+              <div class="footer-right">
+                <p>LumoAfrica – "Empowering African Voices"</p>
+                <p>© 2025 Zambian Cyber Security Initiative Foundation. All Rights Reserved.</p>
+                <p>
+                  <a href="https://zcsi-foundation.org/" target="_blank" rel="noopener noreferrer">Visit ZCSIF Website</a>
+                </p>
+              </div>
+        </div>
+      </footer>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>

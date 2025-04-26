@@ -8,7 +8,7 @@ def home():
     return render_template("index.html",
                            zam_langs=ZAM_LANGS,
                            default_from="en",
-                           default_to="bem")   # tweak if desired
+                           default_to="bem")  
 
 @app.post("/translate")
 def translate():
