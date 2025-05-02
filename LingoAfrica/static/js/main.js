@@ -136,3 +136,26 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("funFact").textContent =
         "💡 Fun fact: " + facts[Math.floor(Math.random()*facts.length)];
 });
+
+function goToView() {
+    const langSelect = document.getElementById("viewLang");
+    if (langSelect) {
+      const lang = langSelect.value;
+      if (lang) {
+        window.location.href = `/view/${lang}`;
+      } else {
+        alert("Please select a language to view entries.");
+      }
+    }
+  }
+  
+// Checkbox Select All
+document.addEventListener("DOMContentLoaded", () => {
+    const selectAll = document.getElementById("selectAll");
+    if (selectAll) {
+      selectAll.addEventListener("change", () => {
+        const checkboxes = document.querySelectorAll("input[name='delete_ids']");
+        checkboxes.forEach(cb => cb.checked = selectAll.checked);
+      });
+    }
+  });

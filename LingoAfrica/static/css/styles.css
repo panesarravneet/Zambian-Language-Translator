@@ -352,3 +352,87 @@ textarea:focus{
 main {
   animation: fadeInUp 0.8s ease-out;
 }
+
+form label {
+  font-weight: 600;
+  display: block;
+  margin-top: 1rem;
+}
+
+form textarea, form select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 2px solid #ddd;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  resize: vertical;
+}
+
+form button {
+  margin-top: 2rem;
+}
+
+.action-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--hero-orange) 80%, #FFB547 100%);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(224, 124, 18, 0.3);
+}
+
+.table-scroll {
+  max-height: 400px;
+  overflow-y: auto;
+  border: 2px solid #000;
+  border-radius: 12px;
+}
+
+/* Round the corners of the actual table too */
+.table-scroll table {
+  width: 100%;
+  border-collapse: separate;  /* enable rounded corners */
+  border-spacing: 0;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Define all table cell borders and appearance */
+.table-scroll th,
+.table-scroll td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #000;
+  background-color: #fff;
+}
+
+/* Sticky headers with border */
+.table-scroll thead th {
+  background: #f4e9d8;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  border-bottom: 2px solid #000;
+}
+
+/* Optional: add zebra stripes */
+.table-scroll tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.action-button.danger {
+  background: #c0392b;
+}
+.action-button.danger:hover {
+  box-shadow: 0 6px 18px rgba(192, 57, 43, 0.3);
+}

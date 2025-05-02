@@ -1,0 +1,43 @@
+{% extends "translator.html" %}
+{% block content %}
+<div class="card">
+  <h2>📝 Help Build Our Language Dataset</h2>
+  <p>Submit sentence pairs in any of the following local languages:</p>
+
+  <form method="POST">
+    <label for="language">Select Language</label>
+    <select name="language" id="language" required>
+      <option value="">-- Choose --</option>
+      <option value="lozi">Lozi</option>
+      <option value="tonga">Tonga</option>
+      <option value="kaonde">Kaonde</option>
+      <option value="lunda">Lunda</option>
+      <option value="luvale">Luvale</option>
+    </select>
+
+    <label for="source">Original Text (in selected language)</label>
+    <textarea name="source" id="source" required></textarea>
+
+    <label for="english">English Translation</label>
+    <textarea name="english" id="english" required></textarea>
+
+    <button type="submit" id="translateBtn">Submit ✨</button>
+
+    <hr style="margin: 2rem 0;">
+
+    <label for="viewLang">Want to see current entries?</label><br>
+    <select id="viewLang" style="padding: 0.5rem; border-radius: 8px;">
+      <option value="">-- Choose Language --</option>
+      <option value="lozi">Lozi</option>
+      <option value="tonga">Tonga</option>
+      <option value="kaonde">Kaonde</option>
+      <option value="lunda">Lunda</option>
+      <option value="luvale">Luvale</option>
+    </select>
+
+    <button type="button" class="action-button" onclick="goToView()" style="margin-top: 1rem;">
+      📂 View Submissions
+    </button>
+  </form>
+</div>
+{% endblock %}

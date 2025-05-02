@@ -1,0 +1,57 @@
+{% extends "translator.html" %}
+{% block content %}
+<div class="card">
+  <h2>📚 About the Zambian Translation Tool</h2>
+
+  <p>
+    This initiative is developed in collaboration with the <strong>Zambian Cyber Security Initiative Foundation (ZCSIF)</strong>. The core objective is to provide a centralized and accessible translation tool for local Zambian languages—bridging the gap between indigenous dialects and English using modern AI models.
+  </p>
+
+  <h3>🎯 Project Aim</h3>
+  <p>
+    To develop a multilingual translation platform tailored for Zambia’s underrepresented languages, enabling real-time two-way translations and supporting dataset contributions from native speakers for future model training and improvement.
+  </p>
+
+  <h3>🌍 Currently Supported Languages</h3>
+  <ul>
+    <li>🇲🇼 Nyanja ↔️ English (via NLLB-200)</li>
+    <li>🇿🇲 Bemba ↔️ English (via NLLB-200)</li>
+    <li>🇰🇪 Swahili ↔️ English</li>
+    <li>🇿🇦 Zulu ↔️ English</li>
+    <li>🇿🇼 Shona ↔️ English</li>
+    <li>🇿🇦 Ndebele ↔️ English</li>
+  </ul>
+
+  <h3>🚧 Languages in Progress</h3>
+  <ul>
+    <li>Lozi</li>
+    <li>Luvale</li>
+    <li>Tonga</li>
+    <li>Kaonde</li>
+    <li>Lunda</li>
+  </ul>
+
+  <h3>🧪 Technologies & Models Used</h3>
+  <ul>
+    <li><strong>NLLB-200 (Distilled 600M)</strong> for African language translation</li>
+    <li><strong>Google Translate API</strong> for low-coverage dialects</li>
+  </ul>
+
+  <h3>📁 External Resources & Documentation</h3>
+  <ul>
+    <li><a href="https://github.com/Helsinki-NLP/Opus-MT" target="_blank">OPUS-MT by Helsinki-NLP</a></li>
+    <li><a href="https://huggingface.co/facebook/nllb-200-distilled-600M" target="_blank">Meta NLLB-200 Distilled</a></li>
+    <li><a href="https://github.com/csikasote/bigc" target="_blank">Bemba Dataset by CSikasote</a></li>
+    <li><a href="https://docs.streamlit.io/" target="_blank">Streamlit Docs</a></li>
+  </ul>
+
+  <h3>🚀 Project Status (May 2025)</h3>
+  <p>
+    The tool is in its beta phase, supporting multiple languages, with fully functional dataset creation modules, admin features for deletion/export, and ongoing training of additional dialects. Community-driven contributions are being collected to expand training resources for Lozi, Kaonde, Tonga, Lunda, and Luvale.
+  </p>
+
+  <p style="margin-top: 2rem;">
+    <em>Empowering African voices through technology — one word at a time.</em>
+  </p>
+</div>
+{% endblock %}

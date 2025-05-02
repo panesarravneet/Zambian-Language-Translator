@@ -1,0 +1,45 @@
+{% extends "translator.html" %}
+{% block content %}
+<div class="card">
+  <h2>🗂️ {{ language }} Contributions</h2>
+
+  {% if entries %}
+  <form method="POST" action="/delete/{{ language.lower() }}">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="selectAll"></th>
+            <th>#</th>
+            <th>Original Text</th>
+            <th>English Translation</th>
+            <th>Submitted</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for entry in entries %}
+          <tr>
+            <td><input type="checkbox" name="delete_ids" value="{{ entry.id }}"></td>
+            <td>{{ loop.index }}</td>
+            <td>{{ entry.source_text }}</td>
+            <td>{{ entry.english_translation }}</td>
+            <td>{{ entry.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+      <button type="submit" name="action" value="delete" class="action-button">🗑️ Delete Selected</button>
+      <button type="submit" name="action" value="clear" class="action-button danger">Clear All</button>
+      <a href="/download/{{ language.lower() }}" class="action-button" style="text-decoration: none;">
+        ⬇️ Download as CSV
+      </a>
+    </div>
+  </form>
+  {% else %}
+    <p>No contributions yet for {{ language }}.</p>
+  {% endif %}
+</div>
+{% endblock %}
