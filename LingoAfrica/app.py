@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request, jsonify, redirect, Response
+from flask import Flask, render_template, request, jsonify, redirect, Response, flash, url_for
 from backend import ROUTE_WHITELIST, ZAM_LANGS
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-
+app.secret_key = "panesar"
 # Configure database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///lingo.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -86,20 +86,28 @@ def about():
 @app.route("/contribute", methods=["GET", "POST"])
 def contribute():
     if request.method == "POST":
-        lang = request.form.get("language")
-        source = request.form.get("source")
-        english = request.form.get("english")
+        lang = request.form["language"]
+        src = request.form["source"]
+        eng = request.form["english"]
 
-        model = language_models.get(lang)
-        if model and source and english:
-            entry = model(
-                source_text=source.strip(),
-                english_translation=english.strip()
-            )
-            db.session.add(entry)
+        # Get the correct model based on language
+        model_map = {
+            "lozi": LoziContribution,
+            "tonga": TongaContribution,
+            "kaonde": KaondeContribution,
+            "lunda": LundaContribution,
+            "luvale": LuvaleContribution,
+        }
+        Model = model_map.get(lang)
+        if Model:
+            new_entry = Model(source_text=src, english_translation=eng)
+            db.session.add(new_entry)
             db.session.commit()
+            flash("✅ Contribution submitted successfully!", "success")
+        else:
+            flash("⚠️ Unsupported language selection.", "error")
 
-        return redirect("/contribute")
+        return redirect(url_for("contribute"))
 
     return render_template("contribute.html")
 
